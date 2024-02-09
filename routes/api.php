@@ -26,6 +26,5 @@ Route::middleware('auth:sanctum')->group(function () {
     //Route::get('/user/create',[UserController::class,'createUser']);
 
     //Clients
-    Route::get('/clients',[ClientController::class,'index']);
-    Route::post('/client/create',[ClientController::class,'create']);
+    Route::apiResource('clients', ClientController::class);
 });

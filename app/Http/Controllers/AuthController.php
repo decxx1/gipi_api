@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\LoginUserRequest;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function registerUser (RegisterUserRequest $request)
+    public function registerUser (RegisterUserRequest $request):JsonResponse
     {
         try {
             $company = Company::create();
@@ -35,7 +36,7 @@ class AuthController extends Controller
 
     }
 
-    public function loginUser (LoginUserRequest $request)
+    public function loginUser (LoginUserRequest $request):JsonResponse
     {
 
         if(!Auth::attempt($request->only('email', 'password'))){
