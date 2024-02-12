@@ -24,7 +24,7 @@ class CrudProductRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'brand' => ['nullable', 'string', 'max:255'],
-            'image' => ['nullable', 'string', 'max:255'],
+            'category_id' => 'required|exists:categories,id',
             'code' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'text',],
             'price_purchase' => ['nullable', 'numeric'],
