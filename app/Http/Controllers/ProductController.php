@@ -26,10 +26,21 @@ class ProductController extends Controller
     public function store( CrudProductRequest $request):JsonResponse
     {
         try{
-            $product = Product::create($request->validated());
+            //tomar datos que pasaron la validación
+            $productData = $request->validated();
+            //except('image')
+            if(isset($request->validated()['image'])){
+                unset($productData['image']);
+            }
+            $product = Product::create($productData);
+            if(isset($request->validated()['image'])){
+                $imageController = new ImageController();
+                $image = $imageController->upload($request, $product->id);
+            }
             return response()->json([
                 'message' => 'Producto creado correctamente',
                 'product' => $product,
+                'image' => $image
             ], 200);
         }catch (\Exception $e){
             return response()->json([

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('produc_id');
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('warehouse_id');
             $table->unsignedBigInteger('quantity')->default(0);
-            $table->unique(['produc_id', 'warehouse_id']);
+            $table->unique(['product_id', 'warehouse_id']);
             $table->timestamps();
-            $table->foreign('produc_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('warehouse_id')->references('id')->on('warehouses')->onUpdate('cascade')->onDelete('cascade');
         });
     }

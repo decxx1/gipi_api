@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedInteger('image_id')->nullable();
             $table->string('brand')->nullable();
             $table->string('code')->nullable();
             $table->text('description')->nullable();
@@ -30,7 +29,6 @@ return new class extends Migration
             $table->timestamps();
             // Definir las relaciones
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 

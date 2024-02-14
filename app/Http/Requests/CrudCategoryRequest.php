@@ -22,7 +22,7 @@ class CrudCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required | unique:categories | max:50',
+            'name' => 'required|unique:categories|max:50',
         ];
     }
 }
